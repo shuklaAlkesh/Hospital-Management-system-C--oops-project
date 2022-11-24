@@ -5,6 +5,7 @@
 #include <string.h>
 #include <vector>
 #include <typeinfo>
+#include<sqlite3.h>
 
 using namespace std;
 

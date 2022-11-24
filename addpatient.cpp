@@ -4,9 +4,17 @@
 #include <ctime>
 #include <iomanip>
 
+
 using namespace std;
-
-
+class person{
+    public:
+        string query, query1;
+        string Name, address, Gender, blood_g;
+        int Age, Date, Month, year;
+        int ID;
+        string state, Nationality,aadhar,mobile;
+        string check_in_date, check_in_time, check_out_date, check_out_time;
+};
 
 int ID;
 int ID1;
@@ -16,7 +24,7 @@ int Age, Date, Month, year,bill;
 long int phone_no;
 string state, Nationality,aadhar,mobile,doctor_name,prescription;
 string check_in_date, check_in_time, check_out_date, check_out_time;
-
+string room,patient_summary;
 
 static int callback(void *data, int argc, char **argv, char **colName)
 {
@@ -38,36 +46,37 @@ static int callback1(void *data, int argc, char **argv, char **colName)
 
 void personInfo()
 {
-    cout << "Patient ID " << ID << "\n";
-    cout << "Enter the Name of the patient :"<< " ";
+    cout << "\tPatient ID " << ID << "\n";
+    cout << "\tEnter the Name of the patient :"<< " ";
     cin.clear();
     cin.ignore();
     fflush(stdin);
     getline(cin, Name);
-    cout << "Enter the Gender :"<< " ";
+    cout << "\tEnter the Gender :"<< " ";
     fflush(stdin);
     getline(cin, Gender); // you can enter both full name ot char also lke M or Male
-    cout << "Enter the Age :" << " ";
+    cout << "\tEnter the Age :" << " ";
     cin >> Age;
-    cout<<"Enter the Doctor Name "<<" ";
+    cout<<"\tEnter the Doctor Name "<<" ";
     fflush(stdin);
-    cout<<"(DR.)"<<" ";
+    cout<<"\t(DR.)"<<" ";
     getline(cin,doctor_name);
-    cout << "Enter the Nationalism :"<< " ";
+    cout << "\tEnter the Nationality :"<< " ";
     fflush(stdin);
     getline(cin, Nationality);
-    cout << "Enter the Address :"<< " ";
+    cout << "\tEnter the Address :"<< " ";
     fflush(stdin);
     getline(cin, address);
-    cout<<"Enter the Addhar Number :"<<" ";
+    cout<<"\tEnter the Aaddhar Number :"<<" ";
     fflush(stdin);
     getline(cin,aadhar);
-    cout<<"Enter the mobile number :"<<endl;
+    cout<<"\tEnter the mobile number :"<<" ";
     fflush(stdin);
     getline(cin,mobile);
-    cout << "Enter the Blood group :"<< " ";
+    cout << "\tEnter the Blood group :"<< " ";
     fflush(stdin);
     getline(cin, blood_g);
+
 }
 
 int addpatient()
@@ -95,7 +104,7 @@ int addpatient()
         ID = max(ID, ID1) + 1;
     }
 
-    cout << "--------------Enter the patient detail --------------" << endl;
+    //cout << "--------------Enter the patient detail --------------" << endl;
     personInfo();
     auto ztime = time(0);
     stringstream _time_date, _time_time;
@@ -104,13 +113,18 @@ int addpatient()
     _time_time << put_time(localtime(&ztime), "%H:%M");
     check_in_time = _time_time.str();
 
+
+
    patient P;
-    P.setData(ID,Name, address,Age,doctor_name,mobile,aadhar,check_in_date,check_in_time,check_out_date,check_out_time,bill,prescription);
+    P.setData(ID,Name, address,Age,doctor_name,mobile,aadhar,check_in_date,check_in_time,check_out_date,check_out_time,room,bill,prescription,patient_summary);
 
     query = P.getData(true);
     myCursor = sqlite3_exec(DB, query.c_str(), NULL, 0, &error);
     insertion_check(myCursor, error); 
 
     sqlite3_close(DB);
+    //cout<<"DATA ADDED SUCCESFULLY !!!"<<endl;
+     
+
     return 0;
 }

@@ -51,7 +51,7 @@ void doctorInfo()
     getline(cin, Gender); // you can enter both full name ot char also lke M or Male
     cout << "Enter the Age :" << " ";
     cin >> Age;
-    cout << "Enter the Nationalism :"<< " ";
+    cout << "Enter the Nationality :"<< " ";
     fflush(stdin);
     getline(cin, Nationality);
     cout << "Enter the Address :"<< " ";
@@ -72,11 +72,17 @@ void doctorInfo()
     cout << "Enter the Blood group :"<< " ";
     fflush(stdin);
     getline(cin, blood_g);
-}
+    string checkOutdate,checkoutTime;
+    cout<<"Enter the CheckIN time (HH:MM)"<<" ";
+    fflush(stdin);
+    getline(cin,check_in_time);
+    cout<<"Enter the CheckOut time (HH:MM)"<<" ";
+    fflush(stdin);
+    getline(cin,check_out_time);
+ }
 
 int addDoctor()
-{
-
+{ 
     sqlite3 *DB;
     int myCursor = 0;
     char *error;
@@ -100,22 +106,28 @@ int addDoctor()
     }
 
     //cout << "--------------Enter the Doctor detail --------------" << endl;
-    doctorInfo();  
+    doctorInfo();
     auto ztime = time(0);
     stringstream _time_date, _time_time;
     _time_date << put_time(localtime(&ztime), "%Y-%m-%d");
     check_in_date = _time_date.str();
+    /*
     _time_time << put_time(localtime(&ztime), "%H:%M");
     check_in_time = _time_time.str();
+    */
 
    Doctor D;
     D.setData(ID,Name,DOC_spec,address,Age,mobile,aadhar,salary,check_in_date,check_in_time,check_out_date,check_out_time);
-
+    D.setData_doctor(ID,Name,DOC_spec,Age,mobile,check_in_time,check_out_time,check_in_date,check_out_date);
     query = D.getData(true);
     myCursor = sqlite3_exec(DB, query.c_str(), NULL, 0, &error);
+    query =D.getData_Doc(true);
+    myCursor = sqlite3_exec(DB, query.c_str(), NULL, 0, &error);
+
     insertion_check(myCursor, error); 
 
     sqlite3_close(DB);
 
     return 0;
 }
+

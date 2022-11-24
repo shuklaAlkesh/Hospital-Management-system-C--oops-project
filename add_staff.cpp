@@ -46,7 +46,7 @@ void staffInfo()
     getline(cin, Gender); // you can enter both full name ot char also lke M or Male
     cout << "Enter the Age :" << " ";
     cin >> Age;
-    cout << "Enter the Nationalism :"<< " ";
+    cout << "Enter the Nationality :"<< " ";
     fflush(stdin);
     getline(cin, Nationality);
     cout << "Enter the Address :"<< " ";

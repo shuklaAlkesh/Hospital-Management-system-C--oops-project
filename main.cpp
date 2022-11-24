@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 #include <sqlite3.h>
 #include <string>
+#include<iostream>
+#include<conio.h>
 
 #include "insertion_check.cpp"
 #include "patient.cpp"
@@ -25,110 +27,161 @@ int mainMenu()
     int choice1;
     flagmain = true;
     while (flagmain)
-    {
+    {   
         system("cls");
-        cout << "------------------* ADD DATA *------------------" << endl;
-        cout << "1. Add New patient      \t << 1 >>" << endl;
-        cout << "2. Add Doctor detail    \t << 2 >>" << endl;
-        cout << "3. Add staff detail     \t << 3 >>" << endl;
-        cout << "------------------* UPDATE DATA *------------------" << endl;
-        cout << "4. Update patient Record\t << 4 >>" << endl;
-        cout << "5. Update Doctor Record \t << 5 >>" << endl;
-        cout << "6. Update staff Record  \t << 6 >>" << endl;
-        cout << "------------------* DELETE DATA *------------------" << endl;
-        cout << "7. Delete patient Record\t << 7 >>" << endl;
-        cout << "8. Delete Doctor Record \t << 8 >>" << endl;
-        cout << "9. Delete staff Record  \t << 9 >>" << endl;
-        cout << "10. Quary Menu          \t << 10 >>" << endl;
-        cout << "11. exit " << endl;
+        cout<<"\n\n";
+        cout << "<<-------------------------------* ADD DATA *------------------------------->>" << endl;
+        cout << "\t1. Add New patient      \t << 1 >>" << endl;
+        cout << "\t2. Add Doctor detail    \t << 2 >>" << endl;
+        cout << "\t3. Add staff detail     \t << 3 >>" << endl;
+        cout << "<<-----------------------------* UPDATE DATA *----------------------------->>" << endl;
+        cout << "\t4. Update patient Record\t << 4 >>" << endl;
+        cout << "\t5. Update Doctor Record \t << 5 >>" << endl;
+        cout << "\t6. Update staff Record  \t << 6 >>" << endl;
+        cout << "<<-----------------------------* DELETE DATA *----------------------------->>" << endl;
+        cout << "\t7. Delete patient Record\t << 7 >>" << endl;
+        cout << "\t8. Delete Doctor Record \t << 8 >>" << endl;
+        cout << "\t9. Delete staff Record  \t << 9 >>" << endl;
+        cout << "<<--------------------* CHECk (Patient/Doctor/Staff) DATA *------------------>>" << endl;
+        cout << "\t10. Quary Menu          \t << 10 >>" << endl;
+        cout << "<<------------------------------* STORE DATA *------------------------------->>" << endl;
+        cout << "\t11. Check medical store Data    \t<< 11 >>" << endl;
+        cout << "\t12. Update medical store Data   \t<< 12 >>" << endl;
+        cout << "<<-------------------------------*  EXIT   *------------------------------>>" << endl;
+        cout << "\t13. exit " << endl;
+        
+        cout << "\tPlease Enter the choice(1-13): " <<"  ";
 
-        cout << "Please Enter the choice(1-11):" << endl;
         cin >> choice;
+         
         switch (choice)
         {
         case 1:
         {
             cout << "\n";
             system("cls");
-            cout << "<<--------------------------- ENTER PATIENT DETAIL --------------------------->>\n";
+            cout << "   <<--------------------------- ENTER PATIENT DETAIL --------------------------->>\n";
             addpatient();
+            cout<<"DATA ADDED SUCCESFULLY !!!"<<endl;
+            system("pause");
             break;
         }
-        break;
         case 2:
         {
-            cout << "\n";
+            
             system("cls");
+            cout << "\n";
             cout << "<<--------------------------- ENTER DOCTOR DETAIL --------------------------->>\n";
             addDoctor();
-
+            cout<<"DATA ADDED SUCCESFULLY !!!"<<endl;
+            system("pause");
             break;
         }
         case 3:
         {
-            cout << "\n";
             system("cls");
+            cout << "\n";
             cout << "<<--------------------------- ENTER STAFF DETAIL --------------------------->>\n";
             addstaff();
+            cout<<"Data ADDED SUCCESFULLY !!!"<<endl;
+            system("pause");
             break;
         }
         case 4:
         {
             system("cls");
+            cout << "\n";
             cout << "<<--------------------------- UPDATE PATIENT RECORD --------------------------->>\n";
             updatePatientRecord();
+            cout<<"DATA UPDATED SUCCESFULLY !!!"<<endl;
+            system("pause");
             break;
         }
         case 5:
         {
             system("cls");
+            cout << "\n";
             cout << "<<--------------------------- UPDATE DOCTOR RECORD --------------------------->>\n";
             updateDoctorRecord();
+            cout<<"DATA UPDATED SUCCESFULLY !!!"<<endl;
+            system("pause");
             break;
         }
         case 6:
         {
             system("cls");
+            cout << "\n";
             cout << "<<--------------------------- UPDATE STAFF RECORD --------------------------->>\n";
             updatestaffRecord();
+            cout<<"DATA UPDATED SUCCESFULLY !!!"<<endl;
+            system("pause");
             break;
         }
         case 7:
         {
             system("cls");
+            cout << "\n";
             cout << "<<--------------------------- DELETE PATIENT DETAIL --------------------------->>\n";
             deletePatientRecord();
+            cout<<"DATA DELETED SUCCESFULLY !!!"<<endl;
+            system("pause");
             break;
         }
         case 8:
         {
             system("cls");
+            cout << "\n";
             cout << "<<--------------------------- DELETE DOCTOR DETAIL --------------------------->>\n";
             deleteDoctorRecord();
+            cout<<"DATA DELETED SUCCESFULLY !!!"<<endl;
+            system("pause");
             break;
         }
         case 9:
         {
             system("cls");
+            cout << "\n";
             cout << "<<--------------------------- DELETE STAFF DETAIL --------------------------->>\n";
             deletestaffRecord();
+            cout<<"DATA DELETED SUCCESFULLY !!!"<<endl;
+            system("pause");
             break;
         }
         case 10:
         {
             system("cls");
-            cout << "<<--------------------------- CHECK (PATIENT/DOCTOR/STAFF) RECORDS  --------------------------->>\n";
+            cout << "\n";
             Quarycases();
             break;
         }
-
         case 11:
+        {
+            system("cls");
+            store s;
+            cout << "\n";
+            cout << "<<--------------------------- MEDICINE STOCK DETAIL --------------------------->>\n";
+            s.display_store_detail();
+            break;
+        }
+        case 12:
+        {   system("cls");
+            store s;
+            cout << "\n";
+            cout << "<<--------------------------- UPDATE STORE DETAIL --------------------------->>\n";
+            s.medicine_stock();
+            cout<<"DATA UPDATED SUCCESFULLY !!!"<<endl;
+            system("pause");
+            break;
+        }
+        case 13:
         {
             flagmain = false;
             break;
         }
         default:
+            cout << "\n";
             cout << "Sorry, Wrong Choice !!!\n"<< endl;
+             system("pause");
             break;
         }
     }
@@ -145,25 +198,33 @@ int main()
     store s(true);
     int ch;
     string pass;
+
     system("cls");
     do
     {
         system("cls");
-        cout << "<---------------------------CHOICES----------------------->\n";
+        //system("color C");
+        cout<<"\n";
+        cout<<"\n";
+        cout<<"\t\t       |      *************** MAIN MENU ***************        | " <<endl;
+        cout<<"\t\t       |               HOSPITAL MANAGEMENT SYSTEM              | " <<endl;
+        cout<<"\t\t       | ===================================================   | " <<endl;
+        cout<<"\n\n"<<endl;
+        cout << "   <---------------------------------------CHOICES------------------------------------------>\n";
         cout << "\t1. Admin\n";
         cout << "\t2. Receptionist\n";
         cout << "\t3. Doctor\n";
         cout << "\t4. Store Manager\n";
         cout << "\t5. Exit From The SYSTEM\n";
-        cout << "<--------------------------------------------------------->\n";
-        cout << "\t\nPlease Enter Your Choice (1-5)\n ";
+        cout << "   <------------------------------------------------------------------------------------------>\n";
+        cout << "\tPlease Enter Your Choice (1-5) : ";
         cin >> ch;
         system("cls");
         switch (ch)
         {
             case 1: //  Admin
             {
-                system("cls");
+                //system("cls");
                 if (flag == 0)
                 {
                     cout << "<---------------------------ENTER ADMIN DETAIL----------------------->\n";
@@ -173,12 +234,16 @@ int main()
                     int Y = userID.compare("Admin");
                     if (Y == 0)
                     {
-                        // flag = 1;
-                        cout << "\tEnter ADMIN password: ";
-                        fflush(stdin);
-                        getline(cin, password);
-                        int X = password.compare("Admin");
-                        if (X == 0)
+                       string pass ="";
+                        char ch2;
+                        cout << "\tEnter Admin password :";
+                        ch2 = _getch();
+                        while(ch2 != 13){//character 13 is enter
+                            pass.push_back(ch2);
+                            cout << '*';
+                            ch2 = _getch();
+                        }
+                        if(pass == "Admin")
                         {
                             int exit = mainMenu();
                             if (exit)
@@ -186,23 +251,23 @@ int main()
                         }
                         else
                         {
+
+                            cout<<"\n";
                             cout << "You Entered a wrong password !!!" << endl;
+                            system("pause");
+
                         }
                     }
                     else
                     {
+                        cout<<"\n";
                         cout << "You Entered a wrong user ID !!! " << endl;
+                        system("pause");
                     }
-                }
-                /*
-                if (flag == 1)
-                {
-                    int exit = mainMenu();
-                    if (exit)
-                        return 0;
-                }*/
+                
+                
                 break;
-            }
+             }
             case 2: // Receptionist
             {
                 //system("cls");
@@ -214,28 +279,37 @@ int main()
                 int Y = rec_UserID.compare("receptionist");
                 if (Y == 0)
                 {
-                    cout << "\tEnter Receptionist password: ";
-                    fflush(stdin);
-                    getline(cin, password);
-                    int X = password.compare("receptionist");
-                    if (X == 0)
+                     string pass ="";
+                        char ch2;
+                        cout << "\tEnter Receptionist password :";
+                        ch2 = _getch();
+                        while(ch2 != 13){//character 13 is enter
+                            pass.push_back(ch2);
+                            cout << '*';
+                            ch2 = _getch();
+                        }
+                    if(pass == "receptionist")
                     {
                         system("cls");
                         do
                         {  
-                            //system("cls");
+                            system("cls");
+                            cout<<"\n";
                             cout << "<<---------------------------ENTRY MENU--------------------------->>\n";
                             cout << "\t1.CREATE PATIENT RECORD\n";
                             cout << "\t2.DISPLAY ALL PATIENTS RECORDS\n";
                             cout << "\t3.DISPLAY  PATIENTS RECORDS BY ID\n";
                             cout << "\t4.MODIFY PATIENT RECORD\n";
                             cout << "\t5.DELETE PATIENT RECORD\n";
-                            cout << "\t6.CREATE PATIENT BILL\n";
-                            cout << "\t7.TO EXIT\n";
+                            cout << "\t6.CHECK DOCTOR AVAILABILITY\n";
+                            cout << "\t7.ROOM ALLOTMENT\n";
+                            cout << "\t8.ADD PATIENT SUMMARY\n";
+                            cout << "\t9.CREATE PATIENT BILL\n";
+                            cout << "\t10.TO EXIT\n";
                             cout << "<<---------------------------------------------------------------->>\n";
-                            cout << "\t\nPlease Enter Your Choice (1-7)\n ";
+                            cout << "\t\nPlease Enter Your Choice (1-10) ";
                             cin >> ch;
-                            system("cls");
+                            //system("cls");
                             switch (ch)
                             {
                             case 1:
@@ -243,6 +317,8 @@ int main()
                                 system("cls");
                                 cout << "<<--------------------------- CREATE PATIENT DETAIL --------------------------->>\n";
                                 addpatient();
+                                cout<<"Data ADDED SUCCESFULLY !!!"<<endl;
+                                system("pause");
                                 break;
                             }
                             case 2:
@@ -255,6 +331,7 @@ int main()
                             case 3:
                             {
                                 int search_ID;
+                                //system("cls");
                                 cout << "\n";
                                 cout << "<<--------------------------- ENTER PATIENT DETAIL --------------------------->>\n";
                                 cout << "Enter PATIENT ID to search ->> ";
@@ -262,6 +339,7 @@ int main()
                                 system("cls");
                                 cout << "<<---------------------------PATIENT DETAIL--------------------------->>\n";
                                 queryExec("SELECT * FROM AJAX_PATIENT_DB WHERE ID = " + to_string(search_ID) + ";");
+                                system("pause");
                                 break;
                             }
                             case 4:
@@ -269,6 +347,8 @@ int main()
                                 system("cls");
                                 cout << "<<---------------------------UPDATE PATIENT DETAIL--------------------------->>\n";
                                 updatePatientRecord();
+                                cout<<"DATA UPDATED SUCCESFULLY !!!"<<endl;
+                                system("pause");
                                 break;
                             }
                             case 5:
@@ -276,104 +356,68 @@ int main()
                                 system("cls");
                                 cout << "<<---------------------------DELETE PATIENT DETAIL--------------------------->>\n";
                                 deletePatientRecord();
+                                cout<<"Data DELETED SUCCESFULLY !!!"<<endl;
+                                system("pause");
                                 break;
                             }
-                            case 6:
+                             case 6:
+                            {
+                                system("cls");
+                                cout << "<<--------------------------- ENTER DOCTOR DETAIL --------------------------->>\n";
+                                queryExec1("SELECT * FROM AJAX_Doctor_receptionist_DB;");
+                                break;
+                            }
+                            case 7:
+                            {
+                                system("cls");
+                                cout << "<<--------------------------- ROOM ALLOTMENT TO PATIENT --------------------------->>\n";
+                                room_allotment();
+                                cout<<"ROOM ALLOTED SUCCESFULLY !!!"<<endl;
+                                system("pause");
+                                break;
+                            }
+                            case 8:
+                            {
+                                system("cls");
+                                cout << "<<--------------------------- ADD PATIENT SUMMARY --------------------------->>\n";
+                                patient_Summary();
+                                system("pause");
+                                break;
+                            }
+                            case 9:
                             {
                                 system("cls");
                                 cout << "<<---------------------------PATIENT BILL--------------------------->>\n";
                                 patient_bill();
+                                system("pause");
+                                break;
+                            }
+                             case 10:
+                            {
                                 break;
                             }
                             default:
                             {
-                                system("cls");
                                 cout << "You Entered Wrong choice !!!" << endl;
+                                system("pause");
                                 break;
                             }
                             }
-                        } while (ch != 7);
-                        break;
-                        return 0;
+                        } while (ch != 10);
+                        //return 0;
                     }
                     else
                     {
                         cout << "\tYou Entered a wrong password !!!" << endl;
+                         system("pause");
                     }
                 }
                 else
                 {
                     cout << "\tYou Entered a wrong user ID !!! " << endl;
+                     system("pause");
                 }
-                /*
-                if (flag2 == 1)
-                {
-                    int n;
-                    system("cls");
-                    int num;
-                    do
-                    {
-                        system("cls");
-                        cout << "\n\n\n\tENTRY MENU";
-                        cout << "\n\n\t1.CREATE PATIENT RECORD";
-                        cout << "\n\n\t2.DISPLAY ALL PATIENTS RECORDS";
-                        cout << "\n\n\t3.DISPLAY  PATIENTS RECORDS BY ID";
-                        cout << "\n\n\t4.MODIFY PATIENT RECORD";
-                        cout << "\n\n\t5.DELETE PATIENT RECORD";
-                        cout << "\n\n\t6.CREATE PATIENT BILL";
-                        cout << "\n\n\t7.TO EXIT";
-                        cout << "\n\n\tPlease Enter Your Choice (1-7) ";
-                        cin >> ch;
-                        system("cls");
-                        switch (ch)
-                        {
-                        case 1:
-                        {
-                            cout << "\n";
-                            addpatient();
-                            break;
-                        }
-                        case 2:
-                        {
-                            cout << "--- PATIENT DETAILS ---\n\n";
-                            queryExec("SELECT * FROM AJAX_PATIENT_DB ORDER BY NAME ASC;");
-                            break;
-                        }
-                        case 3:
-                        {
-                            int search_ID;
-                            cout << "\n";
-                            cout << "Enter PATIENT ID to search ->> ";
-                            cin >> search_ID;
-                            cout << "--- PATIENT DETAILS ---\n\n";
-                            queryExec("SELECT * FROM AJAX_PATIENT_DB WHERE ID = " + to_string(search_ID) + ";");
-                            break;
-                        }
-                        case 4:
-                        {
-                            updatePatientRecord();
-                            break;
-                        }
-                        case 5:
-                        {
-                            deletePatientRecord();
-                            break;
-                        }
-                        case 6:
-                        {
-                            patient_bill();
-                            break;
-                        }
-                        default:
-                        {
-                            cout << "You Entered Wrong choice !!!" << endl;
-                            break;
-                        }
-                        }
-                    } while (ch != 7);
-                    break;
-                    return 0;
-                }*/
+               
                 break;
             }
 
@@ -382,17 +426,22 @@ int main()
                 system("cls");
                 string doc_UserID;
                 cout << "<---------------------------ENTER DOCTOR DETAIL----------------------->\n";
-                cout << "\t\tEnter the doctor updation userId: "; // this is common for every doctor so that every doctor can use this id to enter for updation
+                cout << "\tEnter the doctor userId: "; // this is common for every doctor so that every doctor can use this id to enter for updation
                 fflush(stdin);
                 getline(cin, doc_UserID);
                 int Y = doc_UserID.compare("doctor");
                 if (Y == 0)
                 {
-                    cout << "\t\tEnter doctor updation password: ";
-                    fflush(stdin);
-                    getline(cin, password);
-                    int X = password.compare("doctor");
-                    if (X == 0)
+                   string pass ="";
+                        char ch2;
+                        cout << "\tEnter Doctor password :";
+                        ch2 = _getch();
+                        while(ch2 != 13){//character 13 is enter
+                            pass.push_back(ch2);
+                            cout << '*';
+                            ch2 = _getch();
+                        }
+                    if(pass == "doctor")
                     {
                         do
                         {
@@ -404,7 +453,7 @@ int main()
                             cout << "\t\t\n3. Check  Patient Update ->>" << endl;
                             cout << "\t\t\n4. To exit....." << endl;
                             cout << "<<--------------------------------------------------------------------------------------->>\n";
-                            cout << "\t\t\nPlease Select Your Option (1-4)" << endl;
+                            cout << "\t\t\nPlease Select Your Option (1-4)" << " ";
                             cin >> ch;
                             system("cls");
                             switch (ch)
@@ -412,6 +461,7 @@ int main()
                             case 1:
                             {
                                 Patient_prescription();
+                                system("pause");
                                 break;
                             }
                             case 2:
@@ -437,7 +487,9 @@ int main()
                             }
                             default:
                             {
+                                cout<<"\n";
                                 cout << "You Entered wrong choice !!! " << endl;
+                                system("pause");
                                 break;
                             }
                             break;
@@ -447,12 +499,16 @@ int main()
                     }
                     else
                     {
+                        cout<<"\n";
                         cout << "You Entered a wrong password !!!" << endl;
+                        system("pause");
                     }
                 }
                 else
                 {
+                    cout<<"\n";
                     cout << "You Entered a wrong user ID !!! " << endl;
+                    system("pause");
                 }
                 break;
                 return 0;
@@ -463,17 +519,22 @@ int main()
                 system("cls");
                 string store_userId,password;
                 cout << "<---------------------------ENTER STORE MANAGER DETAIL----------------------->\n";
-                cout<<"Enter the store managers Used Id : "<<" ";
+                cout<<"\tEnter the store managers Used Id : "<<" ";
                 fflush(stdin);
                 getline(cin,store_userId);
                 int Y = store_userId.compare("store");
                 if(Y==0)
                 {
-                    cout << "Enter store manager password: ";
-                    fflush(stdin);
-                    getline(cin, password);
-                    int X = password.compare("store");
-                    if (X == 0)
+                    string pass ="";
+                        char ch2;
+                        cout << "\tEnter store manager password : ";
+                        ch2 = _getch();
+                        while(ch2 != 13){//character 13 is enter
+                            pass.push_back(ch2);
+                            cout << '*';
+                            ch2 = _getch();
+                        }
+                    if(pass == "store")
                     {
                         do
                         {
@@ -489,7 +550,7 @@ int main()
                             cout << "\t6. show stock Order Medicine detail  ->>" << endl;
                             cout << "\t7. To exit....." << endl;
                             cout << "<<---------------------------------------------------------------->>\n";
-                            cout << "\tPlease Select Your Option (1-7)" << endl;
+                            cout << "\tPlease Select Your Option (1-7)" << " ";
                             cin >> ch;
                             switch (ch)
                             {
@@ -499,7 +560,8 @@ int main()
                                     store s;
                                     cout << "<<--------------------------- ADD PATIENT ORDER DETAIL --------------------------->>\n";
                                     s.add_customer_order();
-
+                                    cout<<"PATIENT ORDER SUCCESFULLY !!!"<<endl;
+                                    system("pause");
                                     break;
                                 }
                                 case 2:
@@ -508,6 +570,7 @@ int main()
                                     store s;
                                      cout << "<<--------------------------- PATIENT MEDICINE ORDER DETAIL --------------------------->>\n";
                                     s.display_patient_orderdetail();
+                                    //system("pause");
                                      break;
                                 }
                                 case 3:
@@ -516,6 +579,7 @@ int main()
                                     store s;
                                     cout << "<<--------------------------- MEDICINE STOCK DETAIL --------------------------->>\n";
                                     s.display_store_detail();
+                                    //system("pause");
                                     break;
                                 }
                                 case 4:
@@ -523,6 +587,8 @@ int main()
                                     store s;
                                      cout << "<<--------------------------- UPDATE STORE DETAIL --------------------------->>\n";
                                     s.medicine_stock();
+                                    cout<<"STORE DATA UPDATED SUCCESFULLY !!!"<<endl;
+                                    system("pause");
                                     break;
                                 }
                                 case 5:
@@ -531,6 +597,8 @@ int main()
                                     store s;
                                     cout << "<<--------------------------- UPDATE STOCK ORDER DETAIL --------------------------->>\n";
                                     s.orderproducts();
+                                   // cout<<"PATIENT ORDER SUCCESFULLY !!!"<<endl;
+                                    system("pause");
                                     break; 
                                 }
                                 case 6:
@@ -539,6 +607,7 @@ int main()
                                     store s;
                                     cout << "<<--------------------------- STOCK MEDICINE ORDER DETAIL--------------------------->>\n";
                                     s.display_stock_orderdetail();
+                                    //system("pause");
                                     break;
                                 }
                                 case 7:
@@ -548,7 +617,8 @@ int main()
                                 }                        
                                 default:
                                 {
-                                    cout << "You Entered wrong choice !!! " << endl;
+                                    //cout << "You Entered wrong choice !!! " << endl;
+                                     system("pause");
                                     break;
                                 }
                                 break;
@@ -557,12 +627,16 @@ int main()
                     }
                     else
                     {
+                        cout<<"\n";
                         cout << "You Entered a wrong password !!!" << endl;
+                         system("pause");
                     }
                 }
                 else
                 {
+                    cout<<"\n";
                     cout << "You Entered a wrong user ID !!! " << endl;
+                    system("pause");
                 }
 
                 break;
@@ -570,12 +644,16 @@ int main()
 
             case 5:
             {
-                cout << "\t\nTHANK YOU ";
-                cout << "\t\nFOR USING ";
-                cout << "\nHOSPITAL MANAGEMENT SYSTEM !!!\n";
+                cout<<"\n";
+                cout<<"\n";
+                cout << "   <------------------------------------------------------------------------------------------>\n";
+                cout << "\t\t\t\t\tTHANK YOU \n";
+                cout << "\t\t\t\t\tFOR USING \n";
+                cout << "\t\t\t\tHOSPITAL MANAGEMENT SYSTEM !!! \n";
+                cout << "   <--------------------------------************************************----------------------->\n";
                 return 1;
             }
-
+            }
             default:
                 cout << "Wrong Choice !!!" << endl;
                 break;
@@ -590,13 +668,14 @@ int main()
 void Quarycases()
 {
     int choice1;
-    
-    cout << "\t\t\n<< 1 >>  Patient Info  " << endl;
-    cout << "\t\t\n<< 2 >>  Doctor Info  " << endl;
-    cout << "\t\t\n<< 3 >>  staff Info  " << endl;
-    cout << "\t\t\n<< 4 >>  exit->>  " << endl;
-    cout << "<<---------------------------------------------------------------------------->>\n";
-    cout << "\t\t\nEnter the choice that you want to know the Information " << endl;
+    cout<<"\n";
+    cout << "<<--------------------------- CHECK (PATIENT/DOCTOR/STAFF) RECORDS  --------------------------->>\n";
+    cout << "\t<< 1 >>  Patient Info  " << endl;
+    cout << "\t<< 2 >>  Doctor Info  " << endl;
+    cout << "\t<< 3 >>  staff Info  " << endl;
+    cout << "\t<< 4 >>  exit->>  " << endl;
+    cout << "<<----------------------------------------------------------------------------=----------------->>\n";
+    cout << "\t\t\nEnter the choice that you want to know the Information " << " ";
     int ch;
     cin >> ch;
     switch (ch)
@@ -604,14 +683,15 @@ void Quarycases()
     case 1:
     {
         system("cls");
+        cout<<"\n";
         cout << "<<--------------------------- ENTER PATIENT DETAIL --------------------------->>\n";
-        cout << "\t\t\n1. Get PATIENT Details Alphabetically...->>" << endl;
-        cout << "\t\t\n2. Get PATIENT Details ID Wise...->> " << endl;
-        cout << "\t\t\n3. Get PATIENT Details Check IN Date Wise...->> " << endl;
-        cout << "\t\t\n4. Get PATIENT Details Check OUT Date Wise...->> " << endl;
-        cout << "\t\t\n5. Back To Main Menu... ->> " << endl;
+        cout << "\t1. Get PATIENT Details Alphabetically...->>" << endl;
+        cout << "\t2. Get PATIENT Details ID Wise...->> " << endl;
+        cout << "\t3. Get PATIENT Details Check IN Date Wise...->> " << endl;
+        cout << "\t4. Get PATIENT Details Check OUT Date Wise...->> " << endl;
+        cout << "\t5. Back To Main Menu... ->> " << endl;
         cout << "<<----------------------------------------------------------------------------->>\n";
-        cout << "\t\t\nEnter Choice ->> " << endl;
+        cout << "\t\t\nEnter Choice ->> " <<" ";
         cin >> choice1;
         cout << "\n";
         switch (choice1)
@@ -666,13 +746,14 @@ void Quarycases()
     case 2:
     {
         system("cls");
+        cout<<"\n";
         cout << "<<--------------------------- ENTER DOCTOR DETAIL --------------------------->>\n";
-        cout << "1. Get Doctor Details Alphabetically...->>" << endl;
-        cout << "2. Get Doctor Details ID Wise...->> " << endl;
-        cout << "3. Get Doctor Details Check OUT Date Wise...->> " << endl;
-        cout << "5. Back To Main Menu... ->> " << endl;
+        cout << "\t1. Get Doctor Details Alphabetically...->>" << endl;
+        cout << "\t2. Get Doctor Details ID Wise...->> " << endl;
+        cout << "\t3. Get Doctor Details Check OUT Date Wise...->> " << endl;
+        cout << "\t5. Back To Main Menu... ->> " << endl;
         cout << "<<----------------------------------------------------------------------------->>\n";
-        cout << "\nEnter Choice ->> " << endl;
+        cout << "\nEnter Choice ->> " << " ";
 
         cin >> choice1;
         cout << "\n";
@@ -731,12 +812,12 @@ void Quarycases()
     {
         system("cls");
         cout << "<<--------------------------- ENTER STAFF DETAIL --------------------------->>\n";
-        cout << "1. Get STAFF Details Alphabetically...->>" << endl;
-        cout << "2. Get STAFF Details ID Wise...->> " << endl;
-        cout << "3. Get STAFF Details Check IN Date Wise...->> " << endl;
-        cout << "4. Get STAFF Details Check OUT Date Wise...->> " << endl;
-        cout << "5. Back To Main Menu... ->> " << endl;
-        cout << "\nEnter Choice ->> " << endl;
+        cout << "\t1. Get STAFF Details Alphabetically...->>" << endl;
+        cout << "\t2. Get STAFF Details ID Wise...->> " << endl;
+        cout << "\t3. Get STAFF Details Check IN Date Wise...->> " << endl;
+        cout << "\t4. Get STAFF Details Check OUT Date Wise...->> " << endl;
+        cout << "\t5. Back To Main Menu... ->> " << endl;
+        cout << "\nEnter Choice ->> " << " ";
         cin >> choice1;
         cout << "\n";
         switch (choice1)

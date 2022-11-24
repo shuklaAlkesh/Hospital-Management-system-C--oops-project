@@ -37,7 +37,7 @@ int deletePatientRecord()
         return 0;
     }
     query = "DELETE FROM AJAX_PATIENT_DB WHERE ID = "+to_string(ID)+";";
-    cout << "DATA DELETED SUCCESSFULLY !!!"<<endl;
+    //cout << "DATA DELETED SUCCESSFULLY !!!"<<endl;
     myCursor = sqlite3_exec(DB, query.c_str(),NULL,NULL,&error);
     insertion_check(myCursor, error);
     sqlite3_close(DB);
@@ -73,7 +73,7 @@ int deleteDoctorRecord()
     query = "DELETE FROM AJAX_Doctor_DB WHERE ID = "+to_string(ID)+";";
     myCursor = sqlite3_exec(DB, query.c_str(),NULL,NULL,&error);
     insertion_check(myCursor, error);
-    cout << "DATA DELETED SUCCESSFULLY !!!"<<endl;
+    //cout << "DATA DELETED SUCCESSFULLY !!!"<<endl;
     sqlite3_close(DB);
     return 0;
 
@@ -107,7 +107,7 @@ int deletestaffRecord()
     query = "DELETE FROM AJAX_staff_DB WHERE ID = "+to_string(ID)+";";
     myCursor = sqlite3_exec(DB, query.c_str(),NULL,NULL,&error);
     insertion_check(myCursor, error);
-    cout << "DATA DELETED SUCCESSFULLY !!!"<<endl;
+    //cout << "DATA DELETED SUCCESSFULLY !!!"<<endl;
     sqlite3_close(DB);
     return 0;
 

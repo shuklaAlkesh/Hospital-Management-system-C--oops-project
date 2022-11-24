@@ -4,18 +4,6 @@
 #include <iomanip>
 
 using namespace std;
-class person{
-    public:
-        string query, query1;
-        string Name, address, Gender, blood_g;
-        int Age, Date, Month, year;
-        int ID;
-        string state, Nationality,aadhar,mobile;
-        string check_in_date, check_in_time, check_out_date, check_out_time;
-    
-
-
-};
 
 class Staff:public person{
     private:

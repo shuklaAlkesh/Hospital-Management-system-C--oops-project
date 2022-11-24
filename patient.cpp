@@ -5,15 +5,17 @@
 #include <sqlite3.h>
 #include <iomanip>
 
+int Room_A=25,Room_B=25,Room_C=25;
 using namespace std;
 class patient
 {
+
     private:
         int createTable();
         int addpatientdetail();
        // int patient_bill();
         string query, query1;
-        string Name, address, Gender, blood_g;
+        string Name, address, Gender, blood_g,patient_summary,room;
         int Age, Date, Month, year;
        int ID,bill,total;
         string state, Nationality,aadhar,mobile,doctor_name,prescription;
@@ -25,10 +27,10 @@ class patient
         }
         patient(){
             string getData(bool flag);
-            void setData(int ID,string Name,string address,int Age,string doctor_name,string mobile,string aadhar,string check_in_date,string check_in_time,string check_out_date,string check_out_time,int bill,string prescription);
+            void setData(int ID,string Name,string address,int Age,string doctor_name,string mobile,string aadhar,string check_in_date,string check_in_time,string check_out_date,string check_out_time,string room,int bill,string prescription,string patient_summary);
         }
 
-        void setData(int ID,string Name,string address,int Age,string doctor_name,string mobile,string aadhar,string check_in_date,string check_in_time,string check_out_date,string check_out_time,int bill,string prescription){
+        void setData(int ID,string Name,string address,int Age,string doctor_name,string mobile,string aadhar,string check_in_date,string check_in_time,string check_out_date,string check_out_time,string room,int bill,string prescription,string patient_summary){
             this->ID=ID;
             this->Name=Name;
             this->address=address;
@@ -42,9 +44,11 @@ class patient
             this->check_in_time=check_in_time;
             this->check_out_date=check_out_date;
             this->check_out_time=check_out_time;
+            this->room=room;
+            this->patient_summary=patient_summary;
          }
             string getData(bool flag){
-            string data = "INSERT INTO AJAX_PATIENT_DB VALUES("+to_string(ID)+",'"+Name+"','"+address+"',"+to_string(Age)+",'"+doctor_name+"','"+mobile+"','"+aadhar+"','"+check_in_date+"','"+check_in_time+"','"+check_out_date+"','"+check_out_time+"' , "+to_string(bill)+" , '"+prescription+"');";
+            string data = "INSERT INTO AJAX_PATIENT_DB VALUES("+to_string(ID)+",'"+Name+"','"+address+"',"+to_string(Age)+",'"+doctor_name+"','"+mobile+"','"+aadhar+"','"+check_in_date+"','"+check_in_time+"','"+check_out_date+"','"+check_out_time+"' ,'"+room+"', "+to_string(bill)+" , '"+prescription+"','"+patient_summary+"');";
             
             return data;
            
@@ -75,8 +79,10 @@ int patient :: createTable(){
                                                     "IN_TIME TEXT NOT NULL, "
                                                     "OUT_DATE TEXT NOT NULL, "
                                                     "OUT_TIME TEXT NOT NULL,"
+                                                    "ROOM_ALLOTED TEXT NOT NULL, "
                                                     "BILL INT NOT NULL, "
-                                                    "PRESCRIPTION TEXT NOT NULL );";
+                                                    "PRESCRIPTION TEXT NOT NULL,"
+                                                    "PATIENT_SUMMARY TEXT NOT NULL);";
 
     myCursor = sqlite3_exec(DB, query.c_str(), NULL, 0, &error);
     if(myCursor != SQLITE_OK){
@@ -96,8 +102,10 @@ int patient :: createTable(){
                                                     "IN_TIME TEXT NOT NULL, "
                                                     "OUT_DATE TEXT NOT NULL, "
                                                     "OUT_TIME TEXT NOT NULL,"
+                                                    "ROOM_ALLOTED TEXT, "
                                                     "BILL INT NOT NULL, "
-                                                    "PRESCRIPTION TEXT NOT NULL );";
+                                                    "PRESCRIPTION TEXT NOT NULL,"
+                                                    "PATIENT_SUMMARY TEXT NOT NULL);";
 
 
 
